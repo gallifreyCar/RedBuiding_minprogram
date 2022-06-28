@@ -1,0 +1,49 @@
+/* pages/my/my.wxss */
+.myView{
+  display: flex;
+  box-sizing: border-box;
+  flex-direction:row;
+  align-items: center;
+  border-bottom: 6rpx solid #efefef;
+  height: 120rpx;
+ 
+  
+}
+.myView image{
+  
+  height: 60rpx;
+  width: 60rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+}
+.discoverView text{
+  align-items: center;
+}
+
+.image_radius {
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+}
+.avatorView{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 40rpx solid #efefef;
+}
+.avatorView image{
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 100rpx;
+  margin:40rpx ;
+}
+.avatorView text{
+  font-size: large;
+  font-weight:bold ;
+  margin-bottom: 40rpx;
+}
+.avatorView button{
+  margin: 100rpx;
+}

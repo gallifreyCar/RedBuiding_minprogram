@@ -1,0 +1,6 @@
+<!--pages/mapS/mapS.wxml-->
+<view class="mapF" style="background-color: rgb(150,20,9);" bindtap="toMapT" data-area="{{item.name}}" wx:for="{{mapSList}}" wx:key="id">
+    <view>{{item.name}}</view>
+    <view class="mapF_text">{{item.percent}}</view>
+    <progress stroke-width="15" percent="{{item.percent}}" border-radius="20"></progress>  
+</view>

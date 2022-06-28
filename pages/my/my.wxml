@@ -1,0 +1,16 @@
+<!--pages/my/my.wxml-->
+
+<view class="avatorView">
+    <block wx:if="{{!isLogin}}">
+        <button type="primary"  bindtap="loginMe" >登陆</button>
+    </block>
+    <block wx:else>
+        <image src="{{userInfo.avatarUrl}}"></image>
+        <text>{{userInfo.nickName}}</text>
+    </block>
+</view>
+
+<navigator class="myView"  wx:key="id" wx:for="{{myList}}" >
+<image src="{{item.url}}"></image>
+<text>{{item.title}}</text>
+</navigator>

@@ -1,0 +1,21 @@
+<search></search>
+<view style="display: flex;">
+  <view class="imageOne"  wx:for="{{imageList}}" wx:key="id">
+    <image src="{{item.src}}" mode="aspectFit" class="imageOneItem"></image>
+    <view style="display: flex; justify-content: center;">{{item.title}}</view>
+  </view>
+</view>
+
+<swiper class="container1" indicator-dots circular="True">
+  <swiper-item>
+    <view class="item" style="background-color: brown;">A</view>
+  </swiper-item>
+  <swiper-item>
+    <view class="item">B</view>
+  </swiper-item>
+  <swiper-item>               
+    <view class="item">C</view>
+  </swiper-item>
+</swiper>
+
+<view wx:for="{{colorList}}" wx:key="index" class="num-item" style="background-color: rgba({{item}});">{{item}}</view>
