@@ -9,12 +9,12 @@ Page({
   data: {
     imageList: [{
         id: 1,
-        src: "/images/team.jpg",
+        src: "/images/team.png",
         title: "团队介绍"
       },
       {
         id: 2,
-        src: "/images/progress.jpg",
+        src: "/images/progress.png",
         title: "打卡进度"
       },
       {
@@ -29,6 +29,8 @@ Page({
       }
     ],
     buildingInfoList: [],
+    len: 0,
+    clocked: 0,
   },
 
   //登陆方法
@@ -81,17 +83,28 @@ Page({
       },
       success: (res) => {
 
-        // console.log(res.data.buildingsInfo);
+        console.log(res.data);
+
         this.setData({
           buildingInfoList: res.data.buildingsInfo,
+          len: res.data.len,
+          clocked: res.data.clocked
         })
-
         app.globalData.buildingInfoList = res.data.buildingsInfo
-        console.log(app.globalData.buildingInfoList)
+
 
       }
     })
   },
+
+
+  ///点击方法
+  future(e) {
+    console.log(e.target.dataset.info);
+    var num = e.target.dataset.info;
+
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

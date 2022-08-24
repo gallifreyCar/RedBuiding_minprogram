@@ -11,7 +11,7 @@ Page({
     bd_id: 0,
     howfar: 0,
     info: "base",
-    wego: '',
+    wego: '广东省佛山市南汇区九江镇百花名轩2座1001',
     infoList: null,
     isClock: false
   },
@@ -44,7 +44,7 @@ Page({
     var index = options.index;
     this.setData({
       infoList: app.globalData.buildingInfoList[index],
-      wego: app.globalData.buildingInfoList[index][13],
+      // wego: app.globalData.buildingInfoList[index][13],
       bd_id: index + 1
     })
 

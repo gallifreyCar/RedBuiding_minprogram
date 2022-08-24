@@ -16,21 +16,22 @@
       </swiper-item>
     </swiper>
   </view>
+
   <view class="iconFuture">
     <view class="imageOne" wx:for="{{imageList}}" wx:key="id">
-      <image src="{{item.src}}" mode="aspectFit" class="imageOneItem"></image>
+      <image src="{{item.src}}" mode="aspectFit" class="imageOneItem" bindtap="future" data-info="{{item.id}}"></image>
       <view class='imageOnetext'>{{item.title}}</view>
     </view>
   </view>
+
+
 
   <view class="BdInfoTop">
     <image class="BdInfoBar" src="/images/index_bg2.jpg" mode="aspectFill"></image>
     <view class="BdInfoTopText">建筑详情</view>
   </view>
-
-
   <view class="BdInfoList">
-    <view class="BdInfo" wx:for="buildingInfoList" wx:key="index" wx:if="{{index<14}}">
+    <view class="BdInfo" wx:for="buildingInfoList" wx:key="index" wx:if="{{index<len}}">
       <view class="mapInfo">
         <image src="/images/index_bg2.jpg" mode="aspectFill">
         </image>
@@ -50,5 +51,12 @@
         </navigator>
       </view>
     </view>
+  </view>
+</view>
+<view class="progress">
+  <view style="color: rgb(148, 4, 4); font-weight: bolder; margin-left: 10rpx;">✅打卡进度:{{clocked}}/{{len}}</view>
+  <view class="progress-box">
+    <progress percent="{{clocked/len*100}}" stroke-width="8" activeColor="rgb(21, 212, 62)" backgroundColor="rgb(97, 74, 67)" style="margin:8rpx 10rpx"></progress>
+
   </view>
 </view>

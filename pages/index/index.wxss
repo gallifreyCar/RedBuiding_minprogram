@@ -2,6 +2,7 @@
 page {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   background-color: rgb(48, 18, 18);
   background-repeat: repeat;
@@ -33,6 +34,17 @@ page {
   height: 20;
   width: 20;
 }
+
+.progress {
+
+  border-radius: 10rpx;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  width: 90%;
+  top: 640rpx;
+}
+
+
 
 .myswiperView {
   position: absolute;
@@ -86,7 +98,7 @@ page {
 
 .BdInfoList {
   position: absolute;
-  top: 730rpx;
+  top: 830rpx;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -102,7 +114,7 @@ page {
 /* 盖子 */
 .BdInfoTop {
   position: absolute;
-  top: 640rpx;
+  top: 740rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
