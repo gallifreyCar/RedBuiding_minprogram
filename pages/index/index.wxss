@@ -1,0 +1,168 @@
+/* pages/index/index.wxss */
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: rgb(48, 18, 18);
+  background-repeat: repeat;
+}
+
+.bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+
+}
+
+.bg image {
+  width: 100%;
+  height: 100%;
+  display: inherit;
+}
+
+.title {
+  text-align: center;
+  color: white;
+  position: absolute;
+  font-size: xx-large;
+  top: 20rpx;
+  height: 20;
+  width: 20;
+}
+
+.myswiperView {
+  position: absolute;
+  top: 120rpx;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.myswiper {
+  width: 90%;
+  height: 240rpx;
+  border-radius: 10rpx;
+}
+
+.item {
+  text-align: center;
+  width: 100%;
+  height: 240rpx;
+}
+
+.iconFuture {
+  position: absolute;
+  top: 400rpx;
+  border-radius: 20rpx;
+  background-color: white;
+  width: 90%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.imageOne {
+  margin: 10rpx;
+  width: 128rpx;
+  height: 128rpx;
+  padding: 10rpx;
+}
+
+.imageOnetext {
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  color: rgb(148, 4, 4);
+  font-weight: bolder;
+}
+
+.BdInfoList {
+  position: absolute;
+  top: 730rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.BdInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 盖子 */
+.BdInfoTop {
+  position: absolute;
+  top: 640rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 155rpx;
+  font-size: x-large;
+  color: rgb(148, 4, 4);
+
+}
+
+.BdInfoTopText {
+  position: relative;
+  top: -80rpx;
+  left: 20rpx;
+  color: rgb(148, 4, 4);
+}
+
+.BdInfoBar {
+  background-color: saddlebrown;
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+  border-bottom: 14rpx solid rgb(231, 105, 105);
+}
+
+/*背景板 */
+.mapInfo {
+  display: inline;
+  width: 90%;
+  height: 330rpx;
+  border-bottom: 10rpx solid rgb(231, 105, 105);
+}
+
+.mapInfoBg {
+  display: flex;
+}
+
+.card {
+  position: relative;
+  top: -340rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx;
+}
+
+.thumb image {
+  height: 250rpx;
+  width: 250rpx;
+  margin: 20rpx;
+  display: block;
+  margin-right: 15rpx;
+}
+
+.mapInfoImage {
+  border: 7rpx solid rgb(163, 15, 15);
+
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  justify-content: space-around;
+  margin-left: 20rpx;
+}

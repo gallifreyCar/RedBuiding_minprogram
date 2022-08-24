@@ -1,28 +1,87 @@
-// pages/clock/clock.js
-var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
-var qqmapsdk;
-
+// pages/demo02/demo02.js
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.js')
+var qqmapsdk
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    wego: "上海市虹口区四川北路 856 号",
-    // wego:"佛山市南汇区九江镇百花名轩2座1001",
-    poi: [],
-    isClock: false,
-    howfar: ""
+    bd_id: 0,
+    howfar: 0,
+    info: "base",
+    wego: '',
+    infoList: null,
+    isClock: false
   },
-
-  // (测试用）输入地址
-  getwego(e) {
-    // console.log(e)
+  //切换信息
+  switchInfo(e) {
     this.setData({
-      wego: e.detail.value
+      info: e.target.dataset.info
+    })
+  },
+  //发起网络请求获取建筑数据
+  getBuildingsInfo() {
+    wx.request({
+      url: 'https://gallifrey.asia/redBuildings/getBuildingInfo',
+      method: 'GET',
+      success: (res) => {
+        console.log(res.data.buildingsInfo[0]);
+        this.setData({
+          buildingInfoList: res.data.buildingsInfo[0],
+          title: res.data.buildingsInfo[0][2],
+          topImageUrl: res.data.buildingsInfo[0][3]
+        })
+      }
     })
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+    var index = options.index;
+    this.setData({
+      infoList: app.globalData.buildingInfoList[index],
+      wego: app.globalData.buildingInfoList[index][13],
+      bd_id: index + 1
+    })
+
+    qqmapsdk = new QQMapWX({
+      key: '6UDBZ-6NHWV-WEMPR-UVOZH-2UPL2-3JBFI'
+    });
+
+    // console.log(app.globalData.buildingInfoList[index])
+
+  },
+
+  //传输数据到数据库
+  sendMessage() {
+
+    console.log(app.globalData.openid)
+    wx.request({
+      url: 'https://gallifrey.asia/redBuildings/clock',
+      method: 'GET',
+      data: {
+        bd_id: this.data.bd_id,
+        openid: app.globalData.openid
+      },
+
+      success: (res) => {
+        wx.showToast({
+          title: '打卡成功',
+        })
+        this.setData({
+          isClock: true
+        })
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  },
 
 
   // 打卡功能的实现
@@ -47,27 +106,14 @@ Page({
         //根据地址解析在地图上标记解析地址位置
 
         this.setData({ // 获取返回结果，放到markers及poi中，并在地图展示
-          // markers: [{
-          //   id: 0,
-          //   title: res.title,
-          //   latitude: latitude,
-          //   longitude: longitude,
-          //   iconPath: './resources/placeholder.png',//图标路径
-          //   width: 20,
-          //   height: 20,
-          //   callout: { //可根据需求是否展示经纬度
-          //     content: latitude + ',' + longitude,
-          //     color: '#000',
-          //     display: 'ALWAYS'
-          //   }
-          // }],
+
           poi: [{ //根据自己data数据设置相应的地图中心坐标变量名称
             latitude: latitude,
             longitude: longitude
           }]
 
         });
-        console.log(this.data.poi)
+        // console.log(this.data.poi)
         // console.log("目标经纬度为: lat: "+this.data.poi.latitude+',lng: '+this.data.poi.longitude)
       },
       fail: function (error) {
@@ -75,8 +121,6 @@ Page({
       },
 
     })
-
-
     // 获取当前地址经纬度
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -98,9 +142,6 @@ Page({
           for (var i = 0; i < res.elements.length; i++) {
             dis.push(res.elements[i].distance); //将返回数据存入dis数组，
           }
-          // _this.setData({ //设置并更新distance数据
-          //   distance: dis
-          // });
 
           //设置距离
           this.setData({
@@ -108,17 +149,14 @@ Page({
           })
 
           if (this.data.howfar >= 100) {
+
             wx.showToast({
               title: '超出打卡点100米范围，打卡失败',
               icon: 'none'
             })
           } else {
-            wx.showToast({
-              title: '打卡成功',
-            })
-            this.setData({
-              isClock: true
-            })
+            this.sendMessage()
+
           }
 
         },
@@ -126,11 +164,11 @@ Page({
           console.error(error);
         },
         complete: (res) => {
-          console.log(res.result.elements[0].distance);
+          // console.log(res.result.elements[0].distance);
           this.setData({
             howfar: res.result.elements[0].distance
           })
-          console.log(this.data.howfar)
+          // console.log(this.data.howfar)
         }
 
       });
@@ -143,17 +181,6 @@ Page({
   },
 
 
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    qqmapsdk = new QQMapWX({
-      key: '6UDBZ-6NHWV-WEMPR-UVOZH-2UPL2-3JBFI'
-    });
-
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -164,9 +191,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
-  },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏

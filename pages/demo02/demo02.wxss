@@ -1,0 +1,100 @@
+/* pages/demo02/demo02.wxss */
+page {
+  height: 100%;
+  background-color: #2e303f
+}
+
+.page-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #2e303f
+}
+
+.page-body movable-area {
+  height: 100%;
+  width: 105%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+
+.page-body movable-view {
+  height: 100px;
+  width: 100px;
+  background: #eafcfe;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 80rpx;
+  line-height: 200rpx;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif
+}
+
+.title {
+  display: flex;
+  margin: 20rpx;
+  width: 80rpx;
+  font-size: 44rpx;
+  overflow: hidden;
+  font-weight: bold;
+  color: #ebf0ee;
+  font-family: 'Times New Roman', Times, serif
+}
+
+.image {
+  position: relative;
+  left: -20rpx;
+  margin-top: 30rpx;
+  height: 400rpx;
+  width: 600rpx;
+
+}
+
+.title_image {
+  /* background-color: sandybrown; */
+  height: 460rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.switchTitle {
+
+  position: absolute;
+  top: 30rpx;
+  right: 0rpx;
+}
+
+.switchTitle view {
+  margin-bottom: 20rpx;
+  width: 150rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.base {
+  background-color: #f7f1f1;
+}
+
+.history {
+  background-color: #f8e6da;
+}
+
+.now {
+  background-color: #fcfadc
+}
+
+.fun {
+  background-color: #d5fbd0
+}
+
+.info {
+  margin-top: 20rpx;
+  padding: 10rpx;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  color: #eafcfe;
+  line-height: 60rpx;
+}

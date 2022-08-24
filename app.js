@@ -15,7 +15,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    isLogin:false,
-    openid:"",
+    openid: "",
+    buildingInfoList: null,
   }
 })

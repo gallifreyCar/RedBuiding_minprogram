@@ -1,0 +1,54 @@
+<!--pages/index/index.wxml-->
+<view class="bg">
+  <image src="/images/index_bg.jpg"></image>
+  <view class="title">和光同芥</view>
+
+  <view class="myswiperView">
+    <swiper class='myswiper' indicator-dots circular="True">
+      <swiper-item>
+        <view class="item" style="background-color: white;">A</view>
+      </swiper-item>
+      <swiper-item>
+        <view class="item" style="background-color: green;">B</view>
+      </swiper-item>
+      <swiper-item>
+        <view class="item" style="background-color: yellow;">C</view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="iconFuture">
+    <view class="imageOne" wx:for="{{imageList}}" wx:key="id">
+      <image src="{{item.src}}" mode="aspectFit" class="imageOneItem"></image>
+      <view class='imageOnetext'>{{item.title}}</view>
+    </view>
+  </view>
+
+  <view class="BdInfoTop">
+    <image class="BdInfoBar" src="/images/index_bg2.jpg" mode="aspectFill"></image>
+    <view class="BdInfoTopText">建筑详情</view>
+  </view>
+
+
+  <view class="BdInfoList">
+    <view class="BdInfo" wx:for="buildingInfoList" wx:key="index" wx:if="{{index<14}}">
+      <view class="mapInfo">
+        <image src="/images/index_bg2.jpg" mode="aspectFill">
+        </image>
+        <navigator class="card" url="/pages/demo02/demo02?index={{index}}">
+
+          <view class="thumb">
+            <image class="mapInfoImage" src="{{buildingInfoList[index][3]}}" mode="aspectFill">
+            </image>
+          </view>
+          <view class="info">
+            <text style="font-weight: bold;">{{buildingInfoList[index][2]}}</text>
+            <text>营业时间:{{buildingInfoList[index][5]}}</text>
+            <text wx:if="{{buildingInfoList[index][16]==1}}">打卡情况：✅</text>
+            <text wx:else="{{buildingInfoList[index][16]==0}}">打卡情况：❌</text>
+            <text>地址：{{buildingInfoList[index][13]}}</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,67 @@
+/* pages/demo01/demo01.wxss */
+.InfoTitle{
+  display: flex;
+  flex-direction: row;
+}
+.InfoTitle view{
+  height: 50rpx;
+  width: 50%;
+  border-radius: 20rpx  20rpx 0rpx 0rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.card01{
+ background-color: rgb(177, 214, 183) ;
+}
+.card02{
+  background-color: rgba(226, 92, 14, 0.7)
+ }
+
+ .Info view{
+
+  width: 100%;
+  padding-bottom: 200rpx;
+  
+ }
+
+.info01{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(177, 214, 183) ;
+  
+}
+.info01 text{
+  margin-left: 20rpx;
+}
+.info02{
+  height: 100%;
+  background-color: rgb(226, 92, 14,0.7) ;
+}
+.clock{
+  width: 100%;
+  height: 80rpx;
+  border-radius: 40rpx 40rpx 0rpx 0rpx;
+  background-color: rgb(146, 226, 40);
+  text-align: center;
+  font-size: 50rpx;
+  position: fixed;
+  color: rgb(0, 0, 0);
+  left: 0rpx;
+  bottom: 0rpx;
+  font-weight: bold;
+}
+.main{
+  box-sizing: border-box;
+  height: 0rpx;
+  background-color: red;
+}
+
+.image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  height: 550rpx;
+  width: 100%;
+}

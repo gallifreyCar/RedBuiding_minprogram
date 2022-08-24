@@ -5,7 +5,12 @@
     "pages/mapS/mapS",
     "pages/mapT/mapT",
     "pages/clock/clock",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/mapclock/mapclock",
+    "pages/demo01/demo01",
+    "pages/demo02/demo02",
+    "pages/index/index"
+
 
   ],
   "window":{

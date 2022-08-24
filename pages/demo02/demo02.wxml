@@ -1,0 +1,60 @@
+<!--pages/demo02/demo02.wxml-->
+
+<view class="page-body">
+  <view class="title_image">
+    <view class="title">{{infoList[2]}}</view>
+    <image class="image" src="{{infoList[3]}}" mode="aspectFit"></image>
+  </view>
+  <view style="color: azure; margin-left: 30rpx;">{{infoList[4]}}</view>
+  <view>------------------------------------------------------</view>
+  <view class="info">
+    <block wx:if="{{info==='base'}}">
+
+      <text style="font-weight: bold;font-size: 40rpx;">营业时间</text>
+      <!-- <view> ---------</view> -->
+      <text>⏰时间：{{infoList[5]}}</text>
+      <view> -------------------------------------------------</view>
+      <text style="font-weight: bold;font-size: 40rpx;">地址交通</text>
+      <!-- <view> ---------</view> -->
+      <text wx:if="{{infoList[13]!=null}}">🏠地址：{{infoList[13]}}</text>
+      <text wx:if="{{infoList[6]!=null}}">🚊地铁：{{infoList[6]}}</text>
+      <text wx:if="{{infoList[15]!=null}}">🚌{{infoList[15]}}</text>
+      <view> -------------------------------------------------</view>
+      <text style="font-weight: bold;font-size: 40rpx;">联系方式</text>
+
+      <text>☎{{infoList[7]}}</text>
+
+    </block>
+    <block wx:if="{{info==='history'}}">
+
+      <text style="font-weight: bold; font-size: 40rpx;">历史背景</text>
+
+      <text>{{infoList[14]}}</text>
+    </block>
+    <block wx:if="{{info==='now'}}">
+      <text style="font-weight: bold; font-size: 40rpx;">经营现状</text>
+      <text>{{infoList[9]}}
+      </text>
+    </block>
+    <block wx:if="{{info==='fun'}}">
+      <text style="font-weight: bold; font-size: 40rpx;">趣闻轶事</text>
+      <text>{{infoList[11]}}
+      </text>
+    </block>
+  </view>
+
+
+  <movable-area>
+    <movable-view direction="all" out-of-bounds x='600rpx' y='700rpx' bindtap="clocking">打卡</movable-view>
+  </movable-area>
+
+
+
+</view>
+
+<view class="switchTitle" bindtap="switchInfo">
+  <view class="base" bindtap="{{switchInfo}}" data-info="{{'base'}}">基本信息</view>
+  <view class="history" bindtap="{{switchInfo}}" data-info="{{'history'}}">历史背景</view>
+  <view class="now" bindtap="{{switchInfo}}" data-info="{{'now'}}">经营现状</view>
+  <view class="fun" bindtap="{{switchInfo}}" data-info="{{'fun'}}">趣闻轶事</view>
+</view>
