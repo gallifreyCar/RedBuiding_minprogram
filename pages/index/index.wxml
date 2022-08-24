@@ -6,13 +6,13 @@
   <view class="myswiperView">
     <swiper class='myswiper' indicator-dots circular="True">
       <swiper-item>
-        <view class="item" style="background-color: white;">A</view>
+        <image src="/images/a.jpg" mode="aspectFill"></image>
       </swiper-item>
       <swiper-item>
-        <view class="item" style="background-color: green;">B</view>
+        <image src="/images/b.png" mode="aspectFill"></image>
       </swiper-item>
       <swiper-item>
-        <view class="item" style="background-color: yellow;">C</view>
+        <image src="/images/c.jpg" mode="aspectFill"></image>
       </swiper-item>
     </swiper>
   </view>
