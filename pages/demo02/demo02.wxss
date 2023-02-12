@@ -32,20 +32,27 @@ page {
 }
 
 .title {
+  position: relative;
+  left: 20rpx;
+  top: 20rpx;
+
   display: flex;
-  margin: 20rpx;
-  width: 80rpx;
-  font-size: 44rpx;
+  flex-direction: column;
+  writing-mode: vertical-lr;
+
+  width: 70rpx;
+
+  font-size: 35rpx;
   overflow: hidden;
   font-weight: bold;
   color: #ebf0ee;
-  font-family: 'Times New Roman', Times, serif
 }
 
 .image {
   position: relative;
-  left: -20rpx;
+
   margin-top: 30rpx;
+  margin-left: 10rpx;
   height: 400rpx;
   width: 600rpx;
 

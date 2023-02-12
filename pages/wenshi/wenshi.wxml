@@ -1,0 +1,10 @@
+<!--pages/wenshi/wenshi.wxml-->
+<view wx:for="{{wsInfoList}}" wx:key="index">
+  <view class="bg">
+    <navigator class="card" url='/pages/wsInfo/wsInfo?index={{index}}'>
+      <view class="title">{{wsInfoList[index][0]}}</view>
+      <image class="topImage" src="{{wsInfoList[index][2]}}" mode="aspectFill"></image>
+      <view class="what">{{wsInfoList[index][1]}}</view>
+    </navigator>
+  </view>
+</view>

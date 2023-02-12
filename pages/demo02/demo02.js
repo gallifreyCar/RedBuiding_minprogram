@@ -11,9 +11,10 @@ Page({
     bd_id: 0,
     howfar: 0,
     info: "base",
-    wego: '广东省佛山市南汇区九江镇百花名轩2座1001',
+    wego: '',
     infoList: null,
-    isClock: false
+    isClock: false,
+    isAsking: false,
   },
   //切换信息
   switchInfo(e) {
@@ -41,25 +42,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    var index = options.index;
+    var index = Number(options.index);
+    // console.log(index)
     this.setData({
       infoList: app.globalData.buildingInfoList[index],
-      // wego: app.globalData.buildingInfoList[index][13],
+      wego: app.globalData.buildingInfoList[index][13],
       bd_id: index + 1
     })
-
+    console.log(this.data.bd_id)
     qqmapsdk = new QQMapWX({
       key: '6UDBZ-6NHWV-WEMPR-UVOZH-2UPL2-3JBFI'
     });
 
     // console.log(app.globalData.buildingInfoList[index])
+    if (app.globalData.buildingInfoList[index][16] == 1) {
+      // console.log("已经打卡")
+      this.setData({
+        isClock: true
+      })
+    }
+
 
   },
 
   //传输数据到数据库
   sendMessage() {
 
-    console.log(app.globalData.openid)
+    // console.log(app.globalData.openid)
+    // console.log(this.data.bd_id)
     wx.request({
       url: 'https://gallifrey.asia/redBuildings/clock',
       method: 'GET',
@@ -94,12 +104,28 @@ Page({
       return
     }
 
+    //判断点击
+    if (this.data.isAsking) {
+      wx.showToast({
+        title: '正在打卡',
+        icon: 'loading'
+      })
+      return
+    }
+    //开始打卡
+    this.setData({
+      isAsking: true
+    })
+
+
+
+
     //地址解析
     qqmapsdk.geocoder({
       //获取表单传入地址
       address: this.data.wego, //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
       success: (res) => { //成功后的回调
-        console.log(res);
+        // console.log(res);
         var res = res.result;
         var latitude = res.location.lat;
         var longitude = res.location.lng;
@@ -136,7 +162,7 @@ Page({
         to: this.data.poi, //终点坐标
 
         success: (res) => { //成功后的回调
-          console.log(res);
+          // console.log(res);
           var res = res.result;
           var dis = [];
           for (var i = 0; i < res.elements.length; i++) {
@@ -148,15 +174,14 @@ Page({
             howfar: res.elements[0].distance
           })
 
+          //判断距离
           if (this.data.howfar >= 100) {
-
             wx.showToast({
               title: '超出打卡点100米范围，打卡失败',
               icon: 'none'
             })
           } else {
             this.sendMessage()
-
           }
 
         },
@@ -164,18 +189,30 @@ Page({
           console.error(error);
         },
         complete: (res) => {
+          console.log('解析完成')
           // console.log(res.result.elements[0].distance);
           this.setData({
-            howfar: res.result.elements[0].distance
+            howfar: res.result.elements[0].distance, //设置距离
+            isAsking: false
           })
           // console.log(this.data.howfar)
         }
 
       });
     }).catch(() => {
-      wx.showToast({
-        title: '请授权定位信息并且打开手机定位',
-        icon: 'none'
+      if (this.data.howfar >= 100) {
+        wx.showToast({
+          title: '超出打卡点100米范围，打卡失败',
+          icon: 'none'
+        })
+      } else {
+        wx.showToast({
+          title: '请授权定位信息并且打开手机定位',
+          icon: 'none'
+        })
+      }
+      this.setData({
+        isAsking: false
       })
     })
   },

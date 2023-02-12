@@ -1,0 +1,48 @@
+/* pages/wenshi/wenshi.wxss */
+page {
+  width: 100%;
+
+
+  background-color: rebeccapurple;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg {
+  width: 100%;
+  height: 400rpx;
+  margin: 40rpx 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  width: 90%;
+  height: 360rpx;
+  padding: 20rpx;
+  background-color: brown
+}
+
+.topImage {
+  width: 300rpx;
+  height: 300rpx;
+  padding: 10rpx;
+  background-color: rgba(114, 19, 19, 0.884)(197, 107, 107);
+}
+
+.title {
+  font-size: larger;
+  font-weight: 700;
+  color: rgb(250, 215, 215);
+  margin-left: 20rpx;
+}
+
+.what {
+  height: 300rpx;
+  position: relative;
+  top: -320rpx;
+  left: 330rpx;
+  width: 50%;
+  overflow: auto;
+}

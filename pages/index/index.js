@@ -31,6 +31,7 @@ Page({
     buildingInfoList: [],
     len: 0,
     clocked: 0,
+
   },
 
   //登陆方法
@@ -47,7 +48,7 @@ Page({
               code: res.code
             },
             success: (res) => {
-              console.log(res);
+              // console.log(res);
               if (res.statusCode == 200) {
                 app.globalData.openid = res.data.openid //拿到openid
                 // console.log(app.globalData.openid)
@@ -83,7 +84,7 @@ Page({
       },
       success: (res) => {
 
-        console.log(res.data);
+        // console.log(res.data);
 
         this.setData({
           buildingInfoList: res.data.buildingsInfo,
@@ -91,7 +92,7 @@ Page({
           clocked: res.data.clocked
         })
         app.globalData.buildingInfoList = res.data.buildingsInfo
-
+        app.globalData.wsInfoList = res.data.wsInfoList
 
       }
     })
@@ -102,7 +103,11 @@ Page({
   future(e) {
     console.log(e.target.dataset.info);
     var num = e.target.dataset.info;
-
+    if (num == 4) {
+      wx.navigateTo({
+        url: '/pages/wenshi/wenshi',
+      })
+    }
   },
 
   /**
@@ -125,6 +130,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+
     this.getBuildingsInfo()
   },
 

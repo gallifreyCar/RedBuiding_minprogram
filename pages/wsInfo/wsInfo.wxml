@@ -1,0 +1,20 @@
+<!--pages/wsInfo/wsInfo.wxml-->
+<view class="bg">
+  <view class="card">
+    <view class="topTitle">{{wsInfo[0]}}</view>
+    <view class="content">{{wsInfo[1]}}</view>
+  </view>
+</view>
+
+<view class="bg" wx:for="{{LenFor}}">
+  <view class="card">
+    <block wx:if="{{index!=0&&index!=1&&index%2==0&&index!=20}}">
+
+      <image class="cardImage" wx:if="{{wsInfo[index]!=null}}" src="{{wsInfo[index]}}"></image>
+
+    </block>
+    <block wx:if="{{index!=0&&index!=1&&index%2!=0&&index!=20}}">
+      <view class="Cardtext" wx:if="{{wsInfo[index]!=null}}">{{wsInfo[index]}}</view>
+    </block>
+  </view>
+</view>

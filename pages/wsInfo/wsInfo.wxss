@@ -1,0 +1,48 @@
+/* pages/wsInfo/wsInfo.wxss */
+page {
+  width: 100%;
+  background-color: rebeccapurple;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  background-color: brown;
+
+}
+
+.cardImage {
+  margin-top: 60rpx;
+  width: 600rpx;
+  height: 460rpx;
+}
+
+.Cardtext {
+  margin: 20rpx;
+  color: rgb(228, 220, 220);
+  font-weight: 500;
+}
+
+.topTitle {
+  width: 90%;
+  margin-top: 50rpx;
+  font-size: xx-large;
+  color: rgb(228, 220, 220);
+  font-weight: 400;
+}
+
+.content {
+  margin-top: 20rpx;
+  width: 90%;
+  color: rgb(228, 220, 220);
+}

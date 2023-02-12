@@ -5,7 +5,7 @@
     <view class="title">{{infoList[2]}}</view>
     <image class="image" src="{{infoList[3]}}" mode="aspectFit"></image>
   </view>
-  <view style="color: azure; margin-left: 30rpx;">{{infoList[4]}}</view>
+  <view style="color: azure; margin-left: 30rpx; margin:20rpx 40rpx ;">{{infoList[4]}}</view>
   <view>------------------------------------------------------</view>
   <view class="info">
     <block wx:if="{{info==='base'}}">

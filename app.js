@@ -17,5 +17,6 @@ App({
     userInfo: null,
     openid: "",
     buildingInfoList: null,
+    wsInfoList: []
   }
 })

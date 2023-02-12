@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-
-    "pages/demo02/demo02"
+    "pages/demo02/demo02",
+    "pages/wenshi/wenshi",
+    "pages/wsInfo/wsInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
